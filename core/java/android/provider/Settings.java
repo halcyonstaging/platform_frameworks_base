@@ -6612,6 +6612,13 @@ public final class Settings {
         public static final String LIVE_DISPLAY_HINTED = "live_display_hinted";
 
         /**
+         * Enable statusbar double tap gesture on to put device to sleep
+         * 0 = 0ff, 1 = on
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
+
+        /**
          * The current custom picture adjustment values as a delimited string
          * @hide
          */
