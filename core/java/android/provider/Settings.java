@@ -6624,6 +6624,12 @@ public final class Settings {
         public static final String FORCE_FULLSCREEN_CUTOUT_APPS = "force_full_screen_cutout_apps";
 
         /**
+         * Whether the torch launch gesture when the screen is off should be enabled.
+         * @hide
+         */
+        public static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
+
+        /**
          * Whether to scramble a pin unlock layout
          * 0 = 0ff, 1 = on
          * @hide
