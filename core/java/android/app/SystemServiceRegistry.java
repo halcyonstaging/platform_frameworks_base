@@ -280,6 +280,10 @@ import com.android.internal.os.IDropBoxManagerService;
 import com.android.internal.policy.PhoneLayoutInflater;
 import com.android.internal.util.Preconditions;
 
+import com.android.internal.halcyon.app.LineageContextConstants;
+import com.android.internal.halcyon.hardware.LiveDisplayManager;
+import com.android.internal.halcyon.hardware.ILiveDisplayService;
+
 import java.util.Map;
 import java.util.Objects;
 
@@ -1040,6 +1044,19 @@ public final class SystemServiceRegistry {
                         final IAuthService service =
                                 IAuthService.Stub.asInterface(binder);
                         return new BiometricManager(ctx.getOuterContext(), service);
+                    }
+                });
+
+        registerService(LineageContextConstants.LINEAGE_LIVEDISPLAY_SERVICE, LiveDisplayManager.class,
+                new CachedServiceFetcher<LiveDisplayManager>() {
+                    @Override
+                    public LiveDisplayManager createService(ContextImpl ctx)
+                            throws ServiceNotFoundException {
+                        final IBinder binder =
+                                ServiceManager.getServiceOrThrow(LineageContextConstants.LINEAGE_LIVEDISPLAY_SERVICE);
+                        final ILiveDisplayService service =
+                                ILiveDisplayService.Stub.asInterface(binder);
+                        return new LiveDisplayManager(service);
                     }
                 });
 
