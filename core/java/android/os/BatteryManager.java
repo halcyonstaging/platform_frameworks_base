@@ -168,6 +168,20 @@ public class BatteryManager {
 
     /**
      * Extra for {@link android.content.Intent#ACTION_BATTERY_CHANGED}:
+     * Int value representing the current battery capacity in microampere-hours.
+     * {@hide}
+     */
+    public static final String EXTRA_CURRENT_CAPACITY = "android.os.extra.CURRENT_CAPACITY";
+
+    /**
+     * Extra for {@link android.content.Intent#ACTION_BATTERY_CHANGED}:
+     * Int value representing the design capacity of the battery in microampere-hours.
+     * {@hide}
+     */
+    public static final String EXTRA_DESIGN_CAPACITY = "android.os.extra.DESIGN_CAPACITY";
+
+    /**
+     * Extra for {@link android.content.Intent#ACTION_BATTERY_CHANGED}:
      * Int value representing the battery's capacity level. These constants are key indicators of
      * battery status and system capabilities, guiding power management decisions for both the
      * system and apps:
