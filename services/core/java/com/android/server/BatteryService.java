@@ -167,6 +167,8 @@ public final class BatteryService extends SystemService {
      * included in the ACTION_BATTERY_CHANGED intent extras.
      */
     private int mLastChargingPolicy;
+    private int mLastBatteryFullCharge;
+    private int mLastBatteryFullChargeDesign;
 
     private int mSequence = 1;
 
@@ -613,6 +615,8 @@ public final class BatteryService extends SystemService {
                         || mHealthInfo.maxChargingVoltageMicrovolts != mLastMaxChargingVoltage
                         || mHealthInfo.batteryChargeCounterUah != mLastChargeCounter
                         || mInvalidCharger != mLastInvalidCharger
+                        || mHealthInfo.batteryFullChargeUah != mLastBatteryFullCharge
+                        || mHealthInfo.batteryFullChargeDesignCapacityUah != mLastBatteryFullChargeDesign
                         || mHealthInfo.batteryCycleCount != mLastBatteryCycleCount
                         || mHealthInfo.chargingState != mLastChargingState
                         || mHealthInfo.batteryCapacityLevel != mLastBatteryCapacityLevel
@@ -838,6 +842,8 @@ public final class BatteryService extends SystemService {
             mLastChargingState = mHealthInfo.chargingState;
             mLastBatteryCapacityLevel = mHealthInfo.batteryCapacityLevel;
             mLastOemFastCharger = mOemFastCharger;
+            mLastBatteryFullCharge = mHealthInfo.batteryFullChargeUah;
+            mLastBatteryFullChargeDesign = mHealthInfo.batteryFullChargeDesignCapacityUah;
         }
     }
 
@@ -873,7 +879,8 @@ public final class BatteryService extends SystemService {
         intent.putExtra(BatteryManager.EXTRA_CHARGING_STATUS, mHealthInfo.chargingState);
         intent.putExtra(BatteryManager.EXTRA_CAPACITY_LEVEL, mHealthInfo.batteryCapacityLevel);
         intent.putExtra(BatteryManager.EXTRA_OEM_FAST_CHARGER, mOemFastCharger);
-        
+                intent.putExtra(BatteryManager.EXTRA_CURRENT_CAPACITY, mHealthInfo.batteryFullChargeUah);
+        intent.putExtra(BatteryManager.EXTRA_DESIGN_CAPACITY, mHealthInfo.batteryFullChargeDesignCapacityUah);
         if (DEBUG) {
             Slog.d(TAG, "Sending ACTION_BATTERY_CHANGED. scale:" + BATTERY_SCALE
                     + ", info:" + mHealthInfo.toString()
@@ -978,6 +985,8 @@ public final class BatteryService extends SystemService {
         event.putInt(BatteryManager.EXTRA_CYCLE_COUNT, mHealthInfo.batteryCycleCount);
         event.putInt(BatteryManager.EXTRA_CHARGING_STATUS, mHealthInfo.chargingState);
         event.putInt(BatteryManager.EXTRA_CAPACITY_LEVEL, mHealthInfo.batteryCapacityLevel);
+        event.putInt(BatteryManager.EXTRA_CURRENT_CAPACITY, mHealthInfo.batteryFullChargeUah);
+        event.putInt(BatteryManager.EXTRA_DESIGN_CAPACITY, mHealthInfo.batteryFullChargeDesignCapacityUah);
 
         boolean queueWasEmpty = mBatteryLevelsEventQueue.isEmpty();
         mBatteryLevelsEventQueue.add(event);
