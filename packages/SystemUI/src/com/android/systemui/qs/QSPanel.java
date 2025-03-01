@@ -378,7 +378,7 @@ public class QSPanel extends LinearLayout implements Tunable {
         switch (key) {
             case QS_SHOW_BRIGHTNESS_SLIDER:
                 boolean value =
-                       TunerService.parseInteger(newValue, 1) >= 1;
+                       TunerService.parseInteger(newValue, 0) >= 0;
                 if (mBrightnessView != null) {
                     mBrightnessView.setVisibility(value ? VISIBLE : GONE);
                 }
