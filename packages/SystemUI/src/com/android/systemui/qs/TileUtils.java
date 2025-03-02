@@ -43,7 +43,7 @@ public class TileUtils {
     }
 
     private static int getQSColumnsCount(Context context, int resourceCount) {
-        final int QS_COLUMNS_MIN = 2;
+        final int QS_COLUMNS_MIN = 5;
         final Resources res = context.getResources();
         int value = QS_COLUMNS_MIN;
         if (res.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -65,10 +65,10 @@ public class TileUtils {
         if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             value = Settings.System.getIntForUser(
                     context.getContentResolver(), Settings.System.QS_LAYOUT_ROWS,
-                    4, UserHandle.USER_CURRENT);
+                    3, UserHandle.USER_CURRENT);
             valueQQS = Settings.System.getIntForUser(
                     context.getContentResolver(), Settings.System.QQS_LAYOUT_ROWS,
-                    2, UserHandle.USER_CURRENT);
+                    1, UserHandle.USER_CURRENT);
         } else {
             value = Settings.System.getIntForUser(
                     context.getContentResolver(), Settings.System.QS_LAYOUT_ROWS_LANDSCAPE,
@@ -86,7 +86,7 @@ public class TileUtils {
         if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             value = Settings.System.getIntForUser(
                     context.getContentResolver(), Settings.System.QQS_LAYOUT_ROWS,
-                    2, UserHandle.USER_CURRENT);
+                    1, UserHandle.USER_CURRENT);
         } else {
             value = Settings.System.getIntForUser(
                     context.getContentResolver(), Settings.System.QQS_LAYOUT_ROWS_LANDSCAPE,
@@ -118,6 +118,6 @@ public class TileUtils {
    public static int getQsUiStyle(Context context) {
        return Settings.System.getIntForUser(context.getContentResolver(),
                 Settings.System.QS_TILE_UI_STYLE,
-                0, UserHandle.USER_CURRENT);
+                1, UserHandle.USER_CURRENT);
    }
 }

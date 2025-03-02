@@ -95,4 +95,7 @@
 
     <!-- Keyboard shortcuts helper -->
     <dimen name="ksh_container_horizontal_margin">48dp</dimen>
+
+    <!-- A11 QS style -->  
+    <dimen name="qs_tile_margin_vertical">8dp</dimen>
 </resources>

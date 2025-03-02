@@ -826,8 +826,8 @@ constructor(
             stateDescription.append(state.stateDescription)
             if (
                 lastState != INVALID &&
-                    state.state == lastState &&
-                    state.stateDescription != lastStateDescription
+                state.state == lastState &&
+                state.stateDescription != lastStateDescription
             ) {
                 stateDescriptionDeltas = state.stateDescription
             }
@@ -863,6 +863,8 @@ constructor(
             } else {
                 VISIBLE
             }
+
+        labelContainer.visibility = if (collapsed) View.GONE else View.VISIBLE
 
         // Colors
         if (state.state != lastState || state.disabledByPolicy != lastDisabledByPolicy) {
@@ -914,7 +916,7 @@ constructor(
                 if (isA11Style) {
                     tileAnimator.start()
                 } else {
-                   singleAnimator.start()
+                    singleAnimator.start()
                 }
             } else {
                 setAllColors(
@@ -943,7 +945,7 @@ constructor(
         longPressEffect?.qsTile?.state?.handlesLongClick = state.handlesLongClick
         if (
             state.handlesLongClick &&
-                longPressEffect?.initializeEffect(longPressEffectDuration) == true
+            longPressEffect?.initializeEffect(longPressEffectDuration) == true
         ) {
             showRippleEffect = false
             longPressEffect.qsTile?.state?.state = lastState // Store the tile's state

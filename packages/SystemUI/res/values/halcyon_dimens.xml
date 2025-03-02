@@ -17,17 +17,31 @@
     <!-- Width of the battery icon in the status bar when set to circle style. -->
     <dimen name="status_bar_battery_icon_circle_width">14.5dp</dimen>
 
+    <!-- A11 QS style -->  
+    <dimen name="custom_qs_panel_padding_top">20dp</dimen>
+    <dimen name="qs_tile_height">96dp</dimen>
+    <dimen name="qs_tile_margin_horizontal">20dp</dimen>
+    <dimen name="qs_customize_internal_side_paddings">6dp</dimen>
+    <dimen name="qs_label_container_margin">0dp</dimen>
+    <dimen name="qs_quick_tile_size">55dp</dimen>
+    <dimen name="qs_tile_padding">10dp</dimen>
+    <dimen name="qs_tile_margin_vertical">16dp</dimen>
+    <dimen name="qs_tile_text_size">12sp</dimen>
+
+    <dimen name="qqs_layout_padding_bottom">6dp</dimen>
+
     <!-- QQS Brightness slider -->
-    <dimen name="qqs_top_brightness_margin_top">4dp</dimen>
-    <dimen name="qqs_top_brightness_margin_bottom">8dp</dimen>
-    <dimen name="qqs_bottom_brightness_margin_top">8dp</dimen>
-    <dimen name="qqs_bottom_brightness_margin_bottom">4dp</dimen>
+    <dimen name="qqs_top_brightness_margin_top">-10dp</dimen>
+    <dimen name="qqs_top_brightness_margin_bottom">20dp</dimen>
+    <dimen name="qqs_bottom_brightness_margin_top">5dp</dimen>
+    <dimen name="qqs_bottom_brightness_margin_bottom">10dp</dimen>
+
     <!-- QS Brightness slider -->
     <dimen name="qs_top_brightness_margin_top">4dp</dimen>
-    <dimen name="qs_top_brightness_margin_bottom">8dp</dimen>
-    <dimen name="qs_bottom_brightness_margin_top">0dp</dimen>
-    <dimen name="qs_bottom_brightness_margin_bottom">16dp</dimen>
+    <dimen name="qs_top_brightness_margin_bottom">20dp</dimen>
+    <dimen name="qs_bottom_brightness_margin_top">12dp</dimen>
+    <dimen name="qs_bottom_brightness_margin_bottom">4dp</dimen>
+    <dimen name="large_screen_shade_header_min_height">56dp</dimen>
+    <dimen name="qs_panel_padding_top">100dp</dimen>
 
-    <!-- QS A11 Style -->
-    <dimen name="custom_qs_panel_padding_top">0dp</dimen>
 </resources>
