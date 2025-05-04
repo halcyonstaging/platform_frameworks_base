@@ -163,7 +163,11 @@ public class DevicePropsSpoofing {
         propsToChangePixelXL.put("FINGERPRINT", "google/marlin/marlin:10/QP1A.191005.007.A3/5972272:user/release-keys");
     }
 
- private static boolean isGoogleCameraPackage(String packageName) {
+    private static boolean isSpoofingDisabled() {
+        return SystemProperties.getBoolean("persist.sys.dps.disable", false);
+    }
+
+    private static boolean isGoogleCameraPackage(String packageName) {
         return packageName.startsWith("com.google.android.GoogleCamera") ||
                 Arrays.asList(customGoogleCameraPackages).contains(packageName);
     }
@@ -187,6 +191,10 @@ public class DevicePropsSpoofing {
     }
 
     private static void spoofBuildGms() {
+        if (isSpoofingDisabled()) {
+            Log.i(TAG, "DPS is disabled. Skipping GMS Build Spoof");
+            return;
+        }
         if (sCertifiedProps == null || sCertifiedProps.length == 0) return;
         // Alter model name and fingerprint to avoid hardware attestation enforcement
         setPropValue("PRODUCT", sCertifiedProps[0].isEmpty() ? getDeviceName(sCertifiedProps[4]) : sCertifiedProps[0]);
@@ -202,6 +210,11 @@ public class DevicePropsSpoofing {
     }
 
     public static void setProps(Context context) {
+        if (isSpoofingDisabled()) {
+            Log.i(TAG, "DPS is disabled. Skipping Props Spoof");
+            return;
+        }
+
         final String packageName = context.getPackageName();
 
         propsToChangeGeneric.forEach((k, v) -> setPropValue(k, v));
